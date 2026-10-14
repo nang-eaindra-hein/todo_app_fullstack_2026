@@ -1,4 +1,4 @@
-import type { LoginType, SignupType } from "$lib/types/signup";
+import type { LoginType, SignupType } from "../types/signup";
 import { axiosInstance } from "./axios";
 
 export async function signup(data:SignupType){

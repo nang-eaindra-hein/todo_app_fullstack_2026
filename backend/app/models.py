@@ -15,7 +15,7 @@ class Todos(Base):
     title: Mapped[str] = mapped_column(unique=True, index=True)
     description: Mapped[str] = mapped_column()
     status: Mapped[TodoStatusEnum] = mapped_column(
-        SQLEnum(TodoStatusEnum), default=TodoStatusEnum.Todo
+        SQLEnum(TodoStatusEnum), default=TodoStatusEnum.TODO
     )
 
 

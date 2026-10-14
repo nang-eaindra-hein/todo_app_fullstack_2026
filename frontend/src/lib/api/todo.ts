@@ -1,5 +1,5 @@
 
-import type { createListType, updateStatus } from "$lib/types/todo";
+import type { createListType, updateStatus } from "../types/todo";
 import { axiosInstance } from "./axios";
 //create list
 export async function createList(data:createListType){

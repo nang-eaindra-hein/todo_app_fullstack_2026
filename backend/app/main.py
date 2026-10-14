@@ -4,18 +4,15 @@ from litestar.di import Provide
 
 from .auth import jwt_auth
 from .methods import (
-    get_user,
-    get_users,
-    lifespan,
     login,
-    profile,
+    register,
+    lifespan,
     provide_db_session,
     provide_todo_repo,
-    register,
 )
 
 app = Litestar(
-    route_handlers=[register, login, profile, get_users, get_user],
+    route_handlers=[register, login],
     dependencies={
         "db_session": Provide(provide_db_session),
         "todo_repo": Provide(provide_todo_repo),

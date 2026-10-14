@@ -33,6 +33,7 @@
 		"#lib/*": "./src/lib/*"
 	},
 	"dependencies": {
-		"@tanstack/svelte-query": "^6.3.2"
+		"@tanstack/svelte-query": "^6.3.2",
+		"svelte-5-french-toast": "^2.0.6"
 	}
 }

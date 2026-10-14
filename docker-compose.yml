@@ -21,7 +21,7 @@ services:
     container_name: todo_2026_container #docker container name
     restart: always
     ports:
-      - "8000:8000" #outside port must different if other project use 8000 ,change to 8001:8000
+      - "8001:8000" #outside port must different if other project use 8000 ,change to 8001:8000
     volumes:
       - ./backend:/app
       - /app/.venv
