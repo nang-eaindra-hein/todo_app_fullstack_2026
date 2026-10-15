@@ -1,7 +1,7 @@
 export enum TodoStatusEnum {
-  Todo = "todo",
-  InProgress = "in_progress",
-  Done = "done",
+  Todo = "Todo",
+  InProgress = "In_Progress",
+  Done = "Done",
 }
 
 export interface createListType{
@@ -11,10 +11,17 @@ export interface createListType{
 
 }
 
-export interface updateStatus{
+export interface updateStatusType{
     status: TodoStatusEnum
     id:string
 
+}
+
+export interface updateListType{
+    id:number
+    title: string
+    description: string
+    status: TodoStatusEnum
 }
 
 export type TodoStatus = (typeof TodoStatusEnum)[keyof typeof TodoStatusEnum];

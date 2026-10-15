@@ -4,19 +4,6 @@ from uuid import UUID
 from pydantic import BaseModel, ConfigDict
 
 
-class TodoStatusEnum(str, Enum):
-    TODO = "Todo"
-    IN_PROGRESS = "In_Progress"
-    DONE = "Done"
-
-
-class TodoData(BaseModel):
-    id: int
-    title: str
-    status: TodoStatusEnum
-    model_config = ConfigDict(from_attributes=True)
-
-
 class RegisterDTO(BaseModel):
     username: str
     email: str
@@ -33,3 +20,33 @@ class UserResponseDTO(BaseModel):
     username: str
     email: str
     model_config = ConfigDict(from_attributes=True)
+
+
+class TodoStatusEnum(str, Enum):
+    TODO = "Todo"
+    IN_PROGRESS = "In_Progress"
+    DONE = "Done"
+
+
+class TodoData(BaseModel):
+    title: str
+    description: str
+    status: TodoStatusEnum
+
+
+class TodoListDTO(BaseModel):
+    title: str
+    description: str
+    status: TodoStatusEnum = TodoStatusEnum.TODO
+
+
+class TodoListResponseDTO(BaseModel):
+    id: int
+    title: str
+    description: str
+    status: TodoStatusEnum
+    model_config = ConfigDict(from_attributes=True)
+
+
+class TodoStatusUpdateDTO(BaseModel):
+    status: TodoStatusEnum

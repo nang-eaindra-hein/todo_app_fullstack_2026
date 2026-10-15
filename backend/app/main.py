@@ -9,10 +9,25 @@ from .methods import (
     lifespan,
     provide_db_session,
     provide_todo_repo,
+    create_todo_list,
+    get_todos,
+    update_status,
+    delete_todo,
+    delete_todos,
+    update_todo,
 )
 
 app = Litestar(
-    route_handlers=[register, login],
+    route_handlers=[
+        register,
+        login,
+        create_todo_list,
+        get_todos,
+        update_status,
+        delete_todo,
+        delete_todos,
+        update_todo,
+    ],
     dependencies={
         "db_session": Provide(provide_db_session),
         "todo_repo": Provide(provide_todo_repo),
