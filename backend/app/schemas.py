@@ -50,3 +50,15 @@ class TodoListResponseDTO(BaseModel):
 
 class TodoStatusUpdateDTO(BaseModel):
     status: TodoStatusEnum
+
+
+class TodoCountsDTO(BaseModel):
+    all: int
+    todo: int
+    in_progress: int
+    done: int
+
+
+class TodoLists(BaseModel):
+    items: list[TodoListResponseDTO]
+    count: TodoCountsDTO

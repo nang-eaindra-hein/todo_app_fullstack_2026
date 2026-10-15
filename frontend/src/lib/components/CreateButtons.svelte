@@ -1,32 +1,18 @@
 <script lang="ts">
-	import { createList } from '#lib/api/todo.ts';
-	import { TodoStatusEnum, type createListType, type TodoStatus } from '#lib/types/todo.ts';
+	import { TodoStatusEnum, type TodoStatus } from '#lib/types/todo.ts';
 	import Button from '#lib/ui/Button.svelte';
 	import Modal from '#lib/ui/Modal.svelte';
 	import { X, Plus } from '@lucide/svelte';
-	import { createMutation, useQueryClient } from '@tanstack/svelte-query';
 	import toast, { Toaster } from 'svelte-5-french-toast';
 
 	let newAlbumModal = $state(false);
-	let newListModal = $state(false);
+
 	let newAlbumNameInput = $state('');
 	let newListNameInput = $state('');
 	let listDescriptionInput = $state('');
 	let listStatusInput = $state<TodoStatus>(TodoStatusEnum.Todo);
-	const queryClient = useQueryClient();
 
-	//create list
-	const createListMutation = createMutation(() => ({
-		mutationFn: (data: createListType) => createList(data),
-		onSuccess: () => {
-			toast.success('List created!');
-			queryClient.invalidateQueries({ queryKey: ['todos'] });
-			newListModal = false;
-		},
-		onError: () => {
-			toast.error('Failed to create a list!');
-		}
-	}));
+	let { createListMutation, newListModal = $bindable() } = $props();
 	//album modal confirm
 	function handleAlbumConfirm() {
 		if (!newAlbumNameInput) {

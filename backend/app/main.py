@@ -15,6 +15,7 @@ from .methods import (
     delete_todo,
     delete_todos,
     update_todo,
+    provide_user_repo,
 )
 
 app = Litestar(
@@ -31,6 +32,7 @@ app = Litestar(
     dependencies={
         "db_session": Provide(provide_db_session),
         "todo_repo": Provide(provide_todo_repo),
+        "user_repo": Provide(provide_user_repo),
     },
     on_app_init=[jwt_auth.on_app_init],
     cors_config=CORSConfig(allow_origins=["http://localhost:5173"]),

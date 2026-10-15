@@ -1,5 +1,5 @@
 
-import type { createListType, updateStatusType } from "../types/todo";
+import type { createListType, TodosResponse, TodoStatus, updateStatusType } from "../types/todo";
 import { axiosInstance } from "./axios";
 
 
@@ -10,9 +10,11 @@ export async function createList(data:createListType){
 }
 
 //get lists
-export async function getLists() {
-  const result = await axiosInstance.get('/todos');
-  return result.data;
+export async function getLists(status?: TodoStatus): Promise<TodosResponse> {
+	const result = await axiosInstance.get('/todos', {
+		params: status ? { status } : {}
+	});
+	return result.data;
 }
 
 //update status
